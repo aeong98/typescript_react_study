@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { Component } from 'react';
+import {Component} from 'react';
 
-interface State {
+interface State { // state 의 타입추론을 가능하게 한다.
     first: number,
     second: number,
     value: string,
     result: string,
 }
 
-class GuGuDan extends Component<{}, State> {
-    state = {
-        first: Math.ceil(Math.random() * 9),
-        second: Math.ceil(Math.random() * 9),
-        value: '',
-        result: '',
+class GuGuDan extends Component<{}, State>{ // Component가 제네릭임. component 에 props 가 쓰이고, state가 쓰이고, context 가 쓰이고
+    state={
+        first :Math.ceil(Math.random()*9),
+        second: Math.ceil(Math.random() *9),
+        value:'',
+        result:'',
     };
 
-    onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+   onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (parseInt(this.state.value) === this.state.first * this.state.second) {
             this.setState((prevState) => {
@@ -41,12 +41,13 @@ class GuGuDan extends Component<{}, State> {
             }
         }
     };
-
+    
     onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ value: e.target.value });
     };
 
-    input: HTMLInputElement | null = null;
+
+    input: HTMLInputElement | null = null; //null 넣으면 앞에 타입을 맞춰줘야함.
 
     onRefInput = (c: HTMLInputElement) => { this.input = c; };
 

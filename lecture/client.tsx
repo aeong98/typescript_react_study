@@ -1,14 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { hot } from 'react-hot-loader/root';
-import App from './App';
-import { StoreProvider } from './Context';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import {hot} from 'react-hot-loader/root';
 
-const Hot = hot(App); // HOC
+import ResponseCheck from './ResponseCheck';
 
-ReactDOM.render(
-    <StoreProvider>
-        <Hot />
-    </StoreProvider>,
-    document.querySelector('#root')
-);
+const Hot = hot (ResponseCheck);
+
+ReactDOM.render(<><Hot /></>, document.querySelector('#root'));
